@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import { useQuery, useMutation } from '@apollo/client';
 import * as yup from 'yup';
 import { makeStyles } from '@mui/styles';
-import { Button, Grid, Box, Paper, Typography, IconButton } from '@mui/material';
+import { Button, Grid, Box, Paper, Typography, IconButton, CircularProgress } from '@mui/material';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { sanitize } from '../helpers/form';
@@ -30,7 +30,13 @@ const useStyles = makeStyles(theme => ({
   },
   wrapper: {
     padding: theme.spacing(3),
-    marginBottom: theme.spacing(2),
+    marginTop: theme.spacing(2),
+  },
+  spinnerWrapper: {
+    display: 'flex',
+  },
+  spinner: {
+    margin: 'auto',
   },
 }));
 
@@ -106,7 +112,12 @@ const AddProduct = () => {
     }
   }, [meta]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading)
+    return (
+      <Box className={classes.spinnerWrapper}>
+        <CircularProgress className={classes.spinner} />;
+      </Box>
+    );
 
   const selectMenuItems = getMenuItems(products);
 
@@ -138,7 +149,7 @@ const AddProduct = () => {
   return (
     <Box>
       <Paper className={classes.wrapper}>
-        <Typography className={classes.header} align="center" variant="h5">
+        <Typography className={classes.header} align="center" variant="h6">
           Add Product
         </Typography>
         <form onSubmit={handleSubmit} noValidate autoComplete="off">

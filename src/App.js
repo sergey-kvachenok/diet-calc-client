@@ -9,7 +9,7 @@ import { AuthContext } from './context/AuthContext';
 const theme = createTheme();
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000',
+  uri: 'https://diet-calc-server.herokuapp.com/',
   cache: new InMemoryCache(),
 });
 

@@ -17,8 +17,8 @@ const Dashboard = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-      <AddProduct />
       <DailyCard />
+      <AddProduct />
     </Box>
   );
 };

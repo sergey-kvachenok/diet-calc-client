@@ -30,7 +30,7 @@ const DailyCard = () => {
 
   return (
     <Box>
-      <Typography color="textPrimary" variant="h6" gutterBottom>
+      <Typography color="textPrimary" align="center" variant="h6" gutterBottom>
         Total today:
       </Typography>
       <Box className={classes.root}>
